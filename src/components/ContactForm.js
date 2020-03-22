@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
   const [data, setData] = useState();
+  const [numClicks, setNumClicks] = useState(0);
   const { register, errors, handleSubmit, reset } = useForm({
     mode: "onBlur"
   });
@@ -56,8 +57,15 @@ const ContactForm = () => {
           </pre>
         )}
         <input type="submit" />
+        <button onClick={e=>{
+          e.preventDefault();
+
+          setNumClicks(numClicks+1);
+        }}>click me: {numClicks}
+        </button>
       </form>
     </div>
+ 
   );
 };
 
